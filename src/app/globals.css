@@ -26,7 +26,7 @@ body {
   font-family: var(--font-sans), sans-serif;
   background:
     radial-gradient(circle at 18% 10%, rgb(255 255 255 / 14%) 0%, rgb(255 255 255 / 0%) 28%),
-    linear-gradient(180deg, #efcd69 0%, #efcb64 44%, #e9c55c 100%);
+    linear-gradient(180deg, #ffcd66 0%, #ffbf50 44%, #ffb83a 100%);
   color: var(--ink-900);
   font-feature-settings: "ss01" 1, "ss02" 1, "cv01" 1;
 }
@@ -47,7 +47,7 @@ body {
 .sky-gradient {
   position: absolute;
   inset: -15%;
-  background: linear-gradient(190deg, #ffb783 0%, #ffd7aa 30%, #f8d6bf 66%, #d7d8de 100%);
+  background: linear-gradient(190deg, #ffc966 0%, #ffcc99 30%, #ffc080 66%, #ffb866 100%);
 }
 
 .moon {
@@ -57,15 +57,15 @@ body {
   width: clamp(120px, 19vw, 260px);
   aspect-ratio: 1;
   border-radius: 999px;
-  background: linear-gradient(160deg, #fff3d5, #ffd1ad 60%, #ff9870);
-  box-shadow: 0 0 80px #ffb981;
+  background: linear-gradient(160deg, #ffcd66, #ffbf50 60%, #ffb83a);
+  box-shadow: 0 0 80px #ffb83a;
 }
 
 .moon-glow {
   position: absolute;
   inset: -16%;
   border-radius: inherit;
-  background: radial-gradient(circle, rgb(255 242 214 / 62%) 0%, rgb(255 195 130 / 0%) 74%);
+  background: radial-gradient(circle, rgb(255 191 0 / 48%) 0%, rgb(255 177 58 / 0%) 74%);
 }
 
 .hero-copy {
@@ -85,9 +85,10 @@ body {
 
 .hero-copy h1 {
   margin: 10px 0;
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-sans), sans-serif;
   font-size: clamp(2.8rem, 8vw, 6.6rem);
   line-height: 0.95;
+  color: var(--ink-900);
 }
 
 .hero-subtitle {
@@ -108,13 +109,13 @@ body {
 
 .mountain-back {
   height: 42vh;
-  background: linear-gradient(180deg, #617f8b 0%, #384c56 100%);
+  background: linear-gradient(180deg, #b8860b 0%, #8b6914 100%);
 }
 
 .mountain-front {
   height: 33vh;
   bottom: -5vh;
-  background: linear-gradient(180deg, #3d5f6d 0%, #1f3139 100%);
+  background: linear-gradient(180deg, #9a7c1a 0%, #6b5a14 100%);
 }
 
 .hero-handoff {
@@ -131,7 +132,7 @@ body {
 .chat-shell {
   margin: 0 auto;
   max-width: 1180px;
-  height: 100vh;
+  height: 100dvh;
   padding: 5rem 1rem 1rem;
   overflow: hidden;
 }
@@ -139,11 +140,12 @@ body {
 .chat-frame {
   display: grid;
   grid-template-rows: auto 1fr;
-  height: calc(100vh - 6rem);
+  height: calc(100dvh - 6rem);
   overflow: hidden;
   border-radius: 32px;
   background: #fffef8;
   border: 1px solid rgb(30 24 12 / 12%);
+  transform-origin: center top;
 }
 
 .window-chrome {
@@ -289,6 +291,19 @@ body {
   background: #181818; /* Dark input container */
 }
 
+.composer-utility {
+  width: 2.1rem;
+  height: 2.1rem;
+  border: none;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #333333;
+  color: #f2f2f2;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
 .composer-shell input {
   flex: 1;
   padding: 0.5rem 1rem;
@@ -341,43 +356,213 @@ body {
 }
 
 @media (max-width: 900px) {
+  .hero-wrap {
+    min-height: 190vh;
+  }
+
   .hero-copy {
-    top: 16vh;
+    top: 13vh;
+    width: min(92vw, 620px);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.2rem, 11vw, 4.1rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    max-width: 42ch;
   }
 
   .moon {
-    top: 9vh;
-    right: 5vw;
+    top: 8vh;
+    right: 4vw;
+    width: clamp(100px, 28vw, 190px);
+  }
+
+  .hero-handoff {
+    bottom: 9vh;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
   }
 
   .bubble.user,
   .bubble.assistant {
-    max-width: 100%;
+    max-width: 90%;
   }
 
   .chat-shell {
-    padding-top: 3rem;
+    height: 100dvh;
+    padding: 2.8rem 0.75rem 0.75rem;
   }
 
   .chat-frame {
-    border-radius: 22px;
-    height: calc(100vh - 4rem);
+    border-radius: 20px;
+    height: calc(100dvh - 3.55rem);
   }
 
-  .chat-main {
-    padding: 1rem;
+  .chat-topbar {
+    padding: 0.75rem 0.85rem 0.7rem;
+  }
+
+  .brand-mark {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0.55rem;
+  }
+
+  .chat-brand h2 {
+    font-size: 1.05rem;
+  }
+
+  .chat-canvas {
+    padding: 0 0.75rem;
   }
 
   .composer-shell {
-    flex-direction: column;
-    align-items: stretch;
-    border-radius: 24px;
+    gap: 0.4rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 16px;
   }
 
   .composer-shell input {
-    padding: 0.7rem 0.2rem;
+    min-width: 0;
+    padding: 0.52rem 0.75rem;
+    font-size: 0.95rem;
   }
 
+  .composer-send,
+  .composer-utility {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .bubble {
+    padding: 0.82rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .bubble.user {
+    margin-right: 0.3rem;
+  }
+
+  .bubble.assistant {
+    margin-left: 0.3rem;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .hero-wrap {
+    min-height: 175vh;
+  }
+
+  .hero-copy {
+    left: 0.9rem;
+    top: 11vh;
+    width: calc(100vw - 1.8rem);
+  }
+
+  .hero-kicker {
+    font-size: 0.74rem;
+    letter-spacing: 0.09em;
+  }
+
+  .hero-copy h1 {
+    margin: 8px 0;
+    font-size: clamp(1.85rem, 13vw, 2.9rem);
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .moon {
+    top: 7vh;
+    width: clamp(84px, 24vw, 130px);
+  }
+
+  .mountain-back {
+    height: 36vh;
+  }
+
+  .mountain-front {
+    height: 28vh;
+    bottom: -3vh;
+  }
+
+  .hero-handoff {
+    bottom: 7vh;
+    font-size: 0.72rem;
+  }
+
+  .chat-shell {
+    padding: 2.1rem 0.45rem 0.45rem;
+  }
+
+  .chat-frame {
+    border-radius: 16px;
+    height: calc(100dvh - 2.55rem);
+  }
+
+  .chat-topbar {
+    padding: 0.62rem 0.72rem;
+  }
+
+  .chat-brand {
+    gap: 0.55rem;
+  }
+
+  .chat-brand .chat-kicker {
+    font-size: 0.72rem;
+    margin-bottom: 0.04rem;
+  }
+
+  .chat-brand h2 {
+    font-size: 0.94rem;
+  }
+
+  .chat-canvas {
+    padding: 0 0.45rem;
+  }
+
+  .chat-form {
+    margin-bottom: 0.35rem;
+  }
+
+  .composer-shell {
+    gap: 0.34rem;
+    padding: 0.38rem 0.45rem;
+    border-radius: 14px;
+  }
+
+  .composer-shell input {
+    padding: 0.45rem 0.62rem;
+    font-size: 0.92rem;
+  }
+
+  .composer-send,
+  .composer-utility {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .bubble {
+    max-width: 94%;
+    padding: 0.75rem 0.88rem;
+    font-size: 0.92rem;
+  }
+
+  .chat-log > .bubble:first-child {
+    margin-top: 0.85rem;
+  }
+
+  .chat-log > .bubble:last-child {
+    margin-bottom: 0.85rem;
+  }
 }
 
 /* Updated chat bubble styles with mustard color and specific corner rounding */

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
 type SearchResult = {
@@ -19,12 +20,21 @@ export function SearchChat() {
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const chatLogRef = useRef<HTMLDivElement | null>(null);
+  const chatShellRef = useRef<HTMLDivElement | null>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
       content: "Ask anything and I will run a live web search."
     }
   ]);
+
+  const { scrollYProgress } = useScroll({
+    target: chatShellRef,
+    offset: ["start end", "start start"]
+  });
+
+  const chatScale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const chatOpacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
 
   useEffect(() => {
     const chatLog = chatLogRef.current;
@@ -91,8 +101,14 @@ export function SearchChat() {
   }
 
   return (
-    <section className="chat-shell" aria-label="Web search chat">
-      <div className="chat-frame">
+    <section className="chat-shell" aria-label="Web search chat" ref={chatShellRef}>
+      <motion.div
+        className="chat-frame"
+        style={{
+          scale: chatScale,
+          opacity: chatOpacity
+        }}
+      >
         <header className="chat-topbar">
           <div className="chat-brand">
             <div className="brand-mark" aria-hidden="true">
@@ -174,7 +190,7 @@ export function SearchChat() {
             </div>
           </form>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
