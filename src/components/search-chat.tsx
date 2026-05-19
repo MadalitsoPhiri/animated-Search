@@ -163,14 +163,6 @@ export function SearchChat() {
 
           <form className="chat-form" onSubmit={onSubmit}>
             <div className="composer-shell">
-              <button type="button" className="composer-utility" aria-label="Attach file">
-                ⊕
-              </button>
-
-              <button type="button" className="composer-utility" aria-label="Voice input">
-                ◌
-              </button>
-
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
